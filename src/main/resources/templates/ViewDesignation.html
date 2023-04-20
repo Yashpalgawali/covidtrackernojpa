@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mdb.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminmaster.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminstyle.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css " rel="stylesheet" id="bootstrap-css">
+	<script type="text/javascript"   th:src="@{/js/script.js}"></script>
+   
+   	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js "></script>
+   	<script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js "></script>
+   
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/popper.js}"></script>
+	<script th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/mdb.js}"></script>
+  	
+  	 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" />
+  
+<title>View Designation</title>
+
+<script>
+
+	$(document).ready(function(){
+		
+		$('#sttable').DataTable();
+	});
+</script>
+</head>
+<body>
+
+<!-- <div th:replace="fragments/AdminHeader.html :: adminheader"> -->
+
+<!-- </div> -->
+<div id="wrapper">
+    
+    <nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+        
+   <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+                <h1 class="mb-3 font-weight-bold text-warning">Admin Master</h1>
+    </div>
+       
+   <ul class="nav navbar-right top-nav">
+
+            <li class="dropdown">
+                <a th:href="@{#}" class="dropdown-toggle" data-toggle="dropdown">Admin User </a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{#}"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                    <li><a th:href="@{#}"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                    <li class="divider"></li>
+                    <li><a href="logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+ 		
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="dropdown">
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-1" aria-expanded="false">State Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-1" class="collapse">
+                        <li><a  th:href="@{/addstate}"> Add State</a></li>
+                        <li><a	th:href="@{/viewstates}">View State</a></li>
+
+                    </ul>
+                </li>
+               
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-2">District Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-2" class="collapse">
+                        <li><a th:href="@{/adddistrict}"> Add District</a></li>
+                        <li><a th:href="@{/viewdistrict}">View District</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-3">City Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-3" class="collapse">
+                        <li><a th:href="@{/addcity}">Add City</a></li>
+                        <li><a th:href="@{/viewcity}">View city</a></li>
+                    </ul>
+                </li>
+
+                
+ 				<li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-4">Zip Code Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-4" class="collapse">
+                        <li><a   th:href="@{/addzip}">Add ZipCode</a></li>
+                        <li><a   th:href="@{/viewzip}">View ZipCode</a></li>
+                    </ul>
+                </li>
+                
+                 <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-5">Location Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-5" class="collapse">
+                        <li><a th:href="@{/addlocation}">Add Location</a></li>
+                        <li><a th:href="@{/viewlocation}">View Location</a></li>
+                    </ul>
+                </li>
+                
+				<li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-6">Covid Hospital Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-6" class="collapse">
+                        <li><a th:href="@{/hospregister}">Add Covid Hospital</a></li>
+                        <li><a th:href="@{/viewhospital}">View Covid Hospital</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-7">Covid Center Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-7" class="collapse">
+                        <li><a  th:href="@{/covcenreg}">Add Covid Center</a></li>
+                        <li><a  th:href="@{/viewcovcenter}">View Covid Center</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-8">User Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-8" class="collapse">
+                        <li><a th:href="@{/adduser}">Add User</a></li>
+                        <li><a th:href="@{/viewuser}">View Users</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+       </nav>
+     
+	<div class="container"  >
+	<form name="frm" action="" method="post">
+			<div th:if="${response}">
+				<h6 class="alert alert-success" th:text="${response}"></h6>
+			</div>
+			
+			<div th:if="${reserr}">
+				<h6 class="alert alert-danger" th:text="${reserr}"></h6>
+			</div>
+			
+			<table class="table table-bordered table-striped table-hover nowrap" id="sttable">
+				<thead>
+				<tr>
+					<th>Sr</th>
+					<th>Designation</th>
+					<th>Hospital</th>
+					<th>Actions</th>
+				</tr>
+				</thead>
+				<tbody id="stbody">
+					<th:block th:each="dlist : ${dlist}">
+						<tr>
+							<td th:text="${dlistStat.count}"></td>
+							<td th:text="${dlist.desig_name}"></td>
+							<td th:text="${dlist.hospital.hosp_name}"></td>
+							<td><a th:href="@{/editdesigbyid/__${dlist.desig_id}__}"><i class="fa fa-pencil fa-lg"></i> Edit</a></td>
+						</tr>
+					</th:block>
+				</tbody>
+				
+			</table>
+			</form>
+		</div>
+	  </div>
+	</body>
+</html>

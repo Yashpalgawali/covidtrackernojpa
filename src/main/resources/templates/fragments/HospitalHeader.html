@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+
+<header th:fragment="hospheader">
+
+<nav class="navbar navbar-expand-lg navbar-light nav1 " style="background-color:#17a2b8	; ">
+ 	<h1 class="text-warning font-weight-bold ">
+ 			<a class="navbar-brand pl-5 mt-3" th:href="@{/hospital}">Covid 19 Tracker</a>
+ 	</h1> 
+    
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+ <div class="collapse navbar-collapse hed" id="navbarSupportedContent">
+   <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item pl-5">
+        <a class="nav-link" th:href="@{/hospital}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item pl-5">
+        <a class="nav-link text" th:href="@{adminlogin}">Admin</a>
+      </li>
+      
+      <li class="nav-item pl-5">
+        <a class="nav-link"   th:href="@{hospLogin}">Covid Hospitals</a>
+      </li>
+      
+      <li class="nav-item pl-5">
+        <a class="nav-link" th:href="@{covlogin}">Covid Centers</a>
+      </li>
+      
+      <li class="nav-item pl-5"> 
+        <a class="nav-link" th:href="@{patientreg}">Patients</a>
+      </li>
+   </ul>
+   
+  </div>
+</nav>
+
+</header>
+
+</body>
+</html>

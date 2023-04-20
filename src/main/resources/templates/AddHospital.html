@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ 	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mdb.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminmaster.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminstyle.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css " rel="stylesheet" id="bootstrap-css">
+	<script type="text/javascript"   th:src="@{/js/script.js}"></script>
+   
+   	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js "></script>
+   	<script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js "></script>
+   
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/popper.js}"></script>
+	<script th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/mdb.js}"></script>
+  
+<title>Add Hospital</title>
+
+<script>
+
+	$(document).ready(function(){
+		
+	});
+	
+	function getdistbystateid(sid)
+	{
+		$('#dist_id').empty();
+		$('#dist_id').append('<option selected disabled>Please select District</option>');
+				
+		$.ajax({
+				url 	: '/getdistbystateid/'+sid,
+				type	: 'GET',	
+				dataType:	'JSON',
+				success	:	function(result)
+				{
+					$.each(result,function(i){
+						$('#dist_id').append('<option value="'+result[i].dist_id+'">'+result[i].dist_name+'</option>');
+					});
+				}
+		});
+	}
+	
+	function getcitybydistid(did)
+	{
+		$('#city_id').empty();
+		$('#city_id').append('<option selected disabled>Please Select City</option>');
+				
+		$.ajax({
+				url 	: 	'/getcitybydistid/'+did,
+				type	: 	'GET',	
+				dataType:	'JSON',
+				success	:	function(result)
+				{
+					$.each(result,function(i){
+						$('#city_id').append('<option value="'+result[i].city_id+'">'+result[i].city_name+'</option>');
+					});
+				}
+		});
+	}
+	
+	function getzipbycityid(cid)
+	{
+		$('#zip_id').empty();
+		$('#zip_id').append('<option selected disabled>Please Select Zipcode</option>');
+				
+		$.ajax({
+				url 	: 	'/getzipbycityid/'+cid,
+				type	: 	'GET',	
+				dataType:	'JSON',
+				success	:	function(result)
+				{
+					$.each(result,function(i){
+						$('#zip_id').append('<option value="'+result[i].zip_id+'">'+result[i].zipcode+'</option>');
+					});
+				}
+		});
+	}
+	
+</script>
+
+</head>
+<body>
+
+
+<div id="wrapper">
+    
+    <nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+        
+   <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+                <h1 class="mb-3 font-weight-bold text-warning">Admin Master</h1>
+    </div>
+       
+   <ul class="nav navbar-right top-nav">
+
+            <li class="dropdown">
+                <a th:href="@{#}" class="dropdown-toggle" data-toggle="dropdown">Admin User </a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{#}"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                    <li><a th:href="@{#}"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                    <li class="divider"></li>
+                    <li><a href="logout"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+ 		
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="dropdown">
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-1" aria-expanded="false">State Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-1" class="collapse">
+                        <li><a  th:href="@{/addstate}"> Add State</a></li>
+                        <li><a	th:href="@{/viewstate}">View State</a></li>
+
+                    </ul>
+                </li>
+               
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-2">District Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-2" class="collapse">
+                        <li><a th:href="@{/adddistrict}"> Add Hospital</a></li>
+                        <li><a th:href="@{/viewdistrict}">View District</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-3">City Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-3" class="collapse">
+                        <li><a th:href="@{/addcity}">Add Hospital</a></li>
+                        <li><a th:href="@{/viewcity}">View city</a></li>
+                    </ul>
+                </li>
+
+                
+ 				<li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-4">Zip Code Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-4" class="collapse">
+                        <li><a   th:href="@{/addzip}">Add HospitalCode</a></li>
+                        <li><a   th:href="@{/viewzip}">View ZipCode</a></li>
+                    </ul>
+                </li>
+                
+                 <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-5">Location Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-5" class="collapse">
+                        <li><a th:href="@{/addlocation}">Add Location</a></li>
+                        <li><a th:href="@{/viewlocation}">View Location</a></li>
+                    </ul>
+                </li>
+                
+				<li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-6">Covid Hospital Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-6" class="collapse">
+                        <li><a th:href="@{/addhospital}">Add Covid Hospital</a></li>
+                        <li><a th:href="@{/viewhospitals}">View Covid Hospital</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-7">Covid Center Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-7" class="collapse">
+                        <li><a  th:href="@{/covcenreg}">Add Covid Center</a></li>
+                        <li><a  th:href="@{/viewcovcenter}">View Covid Center</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a th:href="@{#}" data-toggle="collapse" data-target="#submenu-8">User Master <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-8" class="collapse">
+                        <li><a th:href="@{/adduser}">Add User</a></li>
+                        <li><a th:href="@{/viewuser}">View Users</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+       </nav>
+     
+	<div class="container" >
+	 
+	 <form th:action="@{/savehospital}" method="POST">
+		
+		<div class="card">
+			<div class="card-header">
+				<h4>Add Hospital</h4>
+			</div>
+	  
+		<div class="card-body">
+		
+		
+			<div class="form-group">
+				<label for="hosp_name">Hospital Name</label>
+					<input class="form-control mb-3" name="hosp_name" id="hosp_name" placeholder="Enter Hospital Name" />
+			</div>
+			
+			<div class="form-group">
+				<label for="hosp_email">Email</label>
+					<input class="form-control mb-3" name="hosp_email" id="hosp_email" placeholder="Enter Hospital Email" />
+			</div>
+			
+			<div class="form-group">
+				<label for="hosp_contact">Contact</label>
+					<input class="form-control mb-3" name="hosp_contact" id="hosp_contact" placeholder="Enter Hospital Contact" />
+			</div>
+			
+			<div class="form-group">
+				<label for="hosp_reg_num">Hospital Registration Number</label>
+					<input class="form-control mb-3" name="hosp_reg_num" id="hosp_reg_num" placeholder="Enter Hospital Registration Number" />
+			</div>
+			
+			<div class="form-group">
+				<label for="hosp_address">Address</label>
+					<textarea rows="5" cols="3" class="form-control mb-3" name="hosp_address" id="hosp_address" placeholder="Enter Hospital Address">
+					</textarea>
+					
+			</div>
+		
+			<div class="form-group">
+				<label for="state_id">Select State</label>
+					
+					<select class="form-control mb-3" id="state_id" name="state_id" onchange="getdistbystateid(this.value)">
+						<option selected disabled>Please Select State</option>
+							<th:block th:each=" stat : ${slist}">
+									<option th:value="${stat.state_id}"  th:text="${stat.state_name}"></option>
+							</th:block>
+					</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="dist_id">Select District</label>
+					
+					<select class="form-control mb-3" id="dist_id" name="dist_id" onchange="getcitybydistid(this.value)">
+						<option selected disabled>Please Select District</option>
+					</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="city_id">Select City</label>
+					<select class="form-control mb-3" id="city_id" name="city_id" onchange="getzipbycityid(this.value)">
+						<option selected disabled>Please Select City</option>
+					</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="zip_id">Select Zipcode</label>
+					<select class="form-control mb-3" id="zip_id" name="zip_id">
+						<option selected disabled>Please Select ZipCode</option>
+					</select>
+			</div>
+	
+				<button type="submit" class="btn btn-primary">Submit</button>
+		
+		</div>
+ 	  </div>
+     </form>
+     </div>
+    </div>
+  </body>
+</html>

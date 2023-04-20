@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+
+
+h1
+{
+	
+	color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  
+}
+.nav1
+{
+	min-height:100px;
+}
+
+.hed
+{
+	font-size:20px;
+	font-family:sans-serif;
+    
+	
+}
+
+.input-radiobutton {
+  display: inline;
+  width: 30%;
+  font-size: 30px;
+  
+}

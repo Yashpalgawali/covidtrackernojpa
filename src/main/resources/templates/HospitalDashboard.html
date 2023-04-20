@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ 	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	
+  		<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mdb.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminmaster.css}"/>
+	<link rel="stylesheet" th:href="@{/css/adminstyle.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css " rel="stylesheet" id="bootstrap-css">
+	<script type="text/javascript"   th:src="@{/js/script.js}"></script>
+   
+   	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js "></script>
+   	<script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js "></script>
+   
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/popper.js}"></script>
+	<script th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/mdb.js}"></script>
+  
+<title>Hospital DashBoard</title>
+
+<style>
+	.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 104px;
+  left: 0;
+  background-color: #17a2b8	;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+/*   color: #818181; */
+	color: #111; 
+  	display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- <div th:replace="fragments/HospitalHeader.html :: hospheader"> -->
+<!-- </div> -->
+
+<div th:replace="fragments/HospitalSidebar.html :: hospsidebar">
+</div>
+
+</body>
+</html>
